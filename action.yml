@@ -1,12 +1,12 @@
-name: Sync up to AWS CodeCommit Action
-description: 'Synchronize from GitHub to CodeCommit via GitHub Actions. No need to ssh-private-key. Need to AWS IAM Credentials only.'
-author: 'youyo <1003ni@gmail.com>'
+name: Sync Github Repo to AWS CodeCommit Action
+description: 'Synchronize your GitHub Repository to AWS CodeCommit via Github Actions. You only need an AWS IAM Credentials on your steps.'
+author: 'mamaoag'
 branding:
-  icon: terminal
-  color: yellow
+  icon: upload-cloud
+  color: orange
 inputs:
   repository_name:
-    description: CodeCommit repository name.
+    description: AWS CodeCommit repository name.
     required: true
   aws_region:
     description: Region of the CodeCommit repository.

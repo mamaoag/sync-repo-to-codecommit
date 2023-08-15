@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Use this step if you want to use Access Key from AWS
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -23,8 +24,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      # Use this step if you want to do it via Github OpenID Connector
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ secrets.TEST_AWS_IAM_ROLE_ARN }}
+          role-duration-seconds: 900
+          role-session-name: GitHubActions-${{ github.run_id }}
+
       - name: Sync up to CodeCommit
-        uses: youyo/sync-up-to-codecommit-action@v1
+        uses: mamaoag/sync-up-to-codecommit-action@v1
         with:
           repository_name: test_repo
           aws_region: us-east-1
