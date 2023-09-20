@@ -11,5 +11,4 @@ git config --global credential.'https://git-codecommit.*.amazonaws.com'.helper '
 git config --global credential.UseHttpPath true
 git remote add sync ${CodeCommitUrl}
 
-git push --all sync
-git push --tags sync
+git push --mirror sync
